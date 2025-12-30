@@ -5,31 +5,58 @@
 <style>
 body {
   margin: 0;
-  background: #0f172a;
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
-.marquee {
+
+/* Banner container */
+.banner {
+  position: relative;
+  height: 80px;
   overflow: hidden;
-  white-space: nowrap;
+  background: url("server.jpg") center/cover no-repeat;
 }
+
+/* Dark overlay */
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* Scrolling text */
+.marquee {
+  position: relative;
+  height: 100%;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
 .marquee span {
   display: inline-block;
   padding-left: 100%;
-  color: #38bdf8;
   font-size: 20px;
-  animation: scroll 18s linear infinite;
+  color: #38bdf8;
+  font-weight: 600;
+  animation: scroll 22s linear infinite;
 }
+
+/* Scroll animation */
 @keyframes scroll {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
 </style>
 </head>
+
 <body>
-  <div class="marquee">
-    <span>
-      🔔 Welcome to IT Data Center | ⚠️ Projects| 📌 Tasks 
-    </span>
+  <div class="banner">
+    <div class="marquee">
+      <span>
+        🖥️ Welcome To Data Center | Projects) |📌 Tasks
+      </span>
+    </div>
   </div>
 </body>
 </html>
