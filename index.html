@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #010413;
+  overflow: hidden;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(120deg, #010413 30%, #040a20 80%);
+  overflow: hidden;
+}
+
+/* Light Data Streams */
+.streams {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  animation: rotate 30s linear infinite;
+  pointer-events: none;
+}
+
+.stream {
+  position: absolute;
+  width: 2px;
+  height: 150%;
+  background: linear-gradient(180deg, transparent, #0af, transparent);
+  opacity: 0.4;
+  animation: move 3s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes move {
+  0% { transform: translateY(-100%); opacity: 0.2; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(100%); opacity: 0.2; }
+}
+
+/* Data Particles */
+.particle {
+  position: absolute;
+  background: #38bdf8;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: drift 4s ease-in-out infinite;
+}
+
+@keyframes drift {
+  from { transform: translate(0,0); opacity: 0.8; }
+  50% { opacity: 0.3; }
+  to { transform: translate(300px, -100px); opacity: 0; }
+}
+
+/* Text overlay */
+.text {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 26px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #38bdf8;
+  font-weight: bold;
+  text-shadow: 0 0 6px #0af;
+}
+</style>
+</head>
+
+<body>
+<div class="banner">
+  <div class="streams">
+    <!-- Multiple rotating streams -->
+    <div class="stream" style="left:10%; animation-delay:0s;"></div>
+    <div class="stream" style="left:30%; animation-delay:1s;"></div>
+    <div class="stream" style="left:50%; animation-delay:2s;"></div>
+    <div class="stream" style="left:70%; animation-delay:3s;"></div>
+    <div class="stream" style="left:90%; animation-delay:4s;"></div>
+  </div>
+
+  <!-- Particles -->
+  <div class="particle" style="top:40px; left:10%; animation-delay:0s;"></div>
+  <div class="particle" style="top:80px; left:30%; animation-delay:1s;"></div>
+  <div class="particle" style="top:120px; left:60%; animation-delay:2s;"></div>
+  <div class="particle" style="top:160px; left:80%; animation-delay:3s;"></div>
+
+  <!-- Overlay Text -->
+  <div class="text">
+    🖥️ Futuristic Data Center — Digital Data Flow | Network | Servers
+  </div>
+</div>
+</body>
+</html>
