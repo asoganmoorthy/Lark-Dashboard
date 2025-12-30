@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: transparent;
+}
+
+/* ===== BANNER ===== */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background:
+    linear-gradient(to right, rgba(2,6,23,0.9), rgba(2,6,23,0.5)),
+    url("server.jpg") center/cover no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* ===== SERVER LIGHTS ===== */
+.lights {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 120px;
+}
+
+.light {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+  animation: blink 1.5s infinite ease-in-out;
+}
+
+.light:nth-child(2) { animation-delay: 0.3s; background:#38bdf8; box-shadow:0 0 6px #38bdf8; }
+.light:nth-child(3) { animation-delay: 0.6s; }
+.light:nth-child(4) { animation-delay: 0.9s; background:#facc15; box-shadow:0 0 6px #facc15; }
+.light:nth-child(5) { animation-delay: 1.2s; background:#f87171; box-shadow:0 0 6px #f87171; }
+
+@keyframes blink {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+/* ===== NETWORK LINES ===== */
+.network-line {
+  position: absolute;
+  height: 2px;
+  background: #38bdf8;
+  width: 100%;
+  opacity: 0.3;
+  animation: moveLine 3s linear infinite;
+}
+
+.network-line:nth-child(1) { top: 40px; animation-duration: 4s; }
+.network-line:nth-child(2) { top: 70px; animation-duration: 3.5s; }
+.network-line:nth-child(3) { top: 100px; animation-duration: 4.5s; }
+
+@keyframes moveLine {
+  0% { background-position: 0 0; }
+  100% { background-position: 200px 0; }
+}
+
+/* ===== FLOATING DATA PACKETS ===== */
+.packet {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #facc15;
+  animation: floatPacket linear infinite;
+}
+
+.packet:nth-child(1) { top: 40px; left: -10px; animation-duration: 3s; }
+.packet:nth-child(2) { top: 70px; left: -20px; animation-duration: 4s; }
+.packet:nth-child(3) { top: 100px; left: -15px; animation-duration: 5s; }
+
+@keyframes floatPacket {
+  0% { transform: translateX(0); opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { transform: translateX(110%); opacity: 0; }
+}
+
+/* ===== SCROLL TEXT ===== */
+.marquee {
+  position: relative;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-left: 100%;
+  z-index: 2;
+}
+
+.marquee span {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 700;
+  color: #38bdf8;
+  animation: scroll 28s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+</style>
+</head>
+
+<body>
+  <div class="banner">
+
+    <!-- Server lights -->
+    <div class="lights">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+    </div>
+
+    <!-- Network lines -->
+    <div class="network-line"></div>
+    <div class="network-line"></div>
+    <div class="network-line"></div>
+
+    <!-- Floating packets -->
+    <div class="packet"></div>
+    <div class="packet"></div>
+    <div class="packet"></div>
+
+    <!-- Scrolling text -->
+    <div class="marquee">
+      <span>
+        🖥️ Data Center Operations | Linux POC | Zscaler | VMware | Storage | Network | IT Projects Dashboard
+      </span>
+    </div>
+
+  </div>
+</body>
+</html>
