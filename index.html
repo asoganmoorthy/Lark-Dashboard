@@ -14,58 +14,92 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: "Segoe UI", Arial, sans-serif;
+  background: transparent;
 }
 
-/* Full banner */
+/* ===== BANNER ===== */
 .banner {
   position: relative;
   width: 100%;
-  height: 160px;                 /* KEY FIX */
-  background: 
-    linear-gradient(to right, rgba(2,6,23,0.85), rgba(2,6,23,0.55)),
+  height: 170px;
+  background:
+    linear-gradient(to right, rgba(2,6,23,0.9), rgba(2,6,23,0.5)),
     url("server.jpg") center/cover no-repeat;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  overflow: hidden;
 }
 
-/* Scrolling container */
+/* ===== BLINKING SERVER LIGHTS ===== */
+.lights {
+  position: absolute;
+  bottom: 22px;
+  left: 40px;
+  display: flex;
+  gap: 8px;
+}
+
+.light {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+  animation: blink 1.5s infinite ease-in-out;
+}
+
+/* Different timing = realistic */
+.light:nth-child(2) { animation-delay: 0.4s; background:#38bdf8; box-shadow:0 0 6px #38bdf8; }
+.light:nth-child(3) { animation-delay: 0.8s; }
+.light:nth-child(4) { animation-delay: 1.2s; background:#facc15; box-shadow:0 0 6px #facc15; }
+
+@keyframes blink {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+/* ===== SCROLL TEXT ===== */
 .marquee {
+  position: relative;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
+  padding-left: 100%;
 }
 
-/* Text */
 .marquee span {
   display: inline-block;
-  padding-left: 100%;
-  font-size: 32px;               /* BIGGER TEXT */
+  font-size: 34px;
   font-weight: 700;
   color: #38bdf8;
-  animation: scroll 25s linear infinite;
+  animation: scroll 28s linear infinite;
 }
 
-/* Animation */
 @keyframes scroll {
-  0%   { transform: translateX(0); }
+  0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
-}
-
-/* Optional watermark removal */
-body {
-  background: transparent;
 }
 </style>
 </head>
 
 <body>
   <div class="banner">
+
+    <!-- Blinking LED lights -->
+    <div class="lights">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+    </div>
+
+    <!-- Scrolling text -->
     <div class="marquee">
       <span>
-        🖥️ Welcome to Data Center | Projects | Tasks | Linux POC | Zscaler | Infrastructure Operations
+        🖥️ Data Center Operations | Linux POC | Zscaler | VMware | Storage | Network | IT Projects Dashboard
       </span>
     </div>
+
   </div>
 </body>
 </html>
